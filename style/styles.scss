@@ -1,0 +1,281 @@
+$palette: #dae4ee, #7884b3, #5d6997, #1e2939;
+$contrast: #e7ac8c;
+@mixin vibes() {
+  font-family: "Great Vibes", cursive;
+  color: $contrast;
+  text-shadow: 3px 7px 5px rgba(139, 134, 180, 0.81);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: nth($palette, 1);
+  text-align: center;
+}
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin-top: -10vh;
+}
+@for $i from 1 through 1000 {
+  #star-#{$i} {
+    left: random(800) + px;
+    top: random(500) + px;
+  }
+}
+@keyframes blinking {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+.container {
+  flex: 1.5;
+  position: relative;
+  z-index: 2;
+  .sky {
+    flex: 1;
+    position: relative;
+    .blinking {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.5em;
+      animation-name: blinking;
+      animation-duration: 10s;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+      z-index: 1;
+    }
+  }
+  h1 {
+    @include vibes;
+    transform: rotate(-15deg);
+    position: relative;
+    z-index: 2;
+    left: -2em;
+    top: 1.5em;
+    font-size: 4.5em;
+  }
+  .button {
+    margin: 7em auto;
+    width: 258px;
+    height: 258px;
+    border-radius: 50%;
+    background-image: url(https://uploads.codesandbox.io/uploads/user/276ee789-9bdf-4245-aee4-569760456e59/Mlj3-moon.png);
+    background-position: center center;
+    box-shadow: 10px 10px 20px #807c80;
+    outline: none;
+    border: none;
+    position: relative;
+    display: block;
+    z-index: 3;
+    &.acvite {
+      transform: scale(0.9);
+      box-shadow: 7px 7px 17px #5a555a;
+    }
+    &.upgrade-mode {
+      box-shadow: 0 0 20px #fdd13f;
+    }
+    p {
+      line-height: 258px;
+      font-family: "Sawarabi Mincho", sans-serif;
+      font-size: 3.5em;
+      color: nth($palette, 4);
+    }
+  }
+}
+.results-container {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  margin-right: 2.5em;
+  .results {
+    height: 10em;
+    background: nth($palette, 3);
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px #5a555a;
+    p {
+      font-family: "Sawarabi Mincho", sans-serif;
+      color: #f1e7e1;
+      font-size: 1.8em;
+      padding: 0.7em 0;
+      span {
+        font-size: 120%;
+      }
+    }
+    .level-box {
+      background: nth($palette, 2);
+      width: 70%;
+      float: right;
+      margin: -0.5em 1em;
+      border-radius: 5px;
+      box-shadow: 5px 5px 12px #5a555a;
+      p {
+        padding: 0.5em 0;
+      }
+    }
+  }
+}
+.container p.instruction,
+p.instruction {
+  @include vibes;
+  font-size: 2em;
+  line-height: 2.5em;
+  text-align: left;
+}
+.button p.instruction {
+  text-align: center;
+}
+.container-upgrade {
+  p {
+    clear: both;
+    padding-top: 1em;
+    span {
+      float: right;
+    }
+    .info-box {
+      display: none;
+      position: absolute;
+      top: 20em;
+      right: 10%;
+      background: #fff;
+      border: 1px solid #dadada;
+      border-radius: 5px;
+      font-family: "Sawarabi Mincho", sans-serif;
+      color: nth($palette, 4);
+      font-size: 50%;
+      line-height: 1.5em;
+      text-shadow: none;
+      padding: 2.5em 2em;
+      &.visible {
+        display: block;
+      }
+    }
+  }
+  .upgrade {
+    display: flex;
+    justify-content: space-evenly;
+    .upgrade-box {
+      span {
+        font-size: 6.5em;
+        color: #fdd13f;
+        text-shadow: -2px 1px 2px #cac8c8;
+        display: block;
+        animation: show 2s;
+        &:hover {
+          color: darken(#fdd13f, 10%);
+          transform: scale(1.2);
+        }
+      }
+      p {
+        font-family: "Sawarabi Mincho", sans-serif;
+        padding: 0;
+        margin-top: -1.5em;
+        font-size: 80%;
+        color: #2b0944;
+        line-height: 1.3em;
+      }
+    }
+    &.hide {
+      visibility: hidden;
+      height: 0.05em;
+    }
+    &.show {
+      visibility: visible;
+      height: 0;
+    }
+  }
+}
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.last-screen-container {
+  display: flex;
+  min-height: 100vh;
+  .last-screen {
+    margin: auto;
+    span {
+      font-size: 30em;
+      color: #fdd13f;
+      text-shadow: -2px 1px 2px #cac8c8;
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      @include vibes;
+      font-size: 10em;
+      position: relative;
+      z-index: 2;
+      top: -2em;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    margin-top: 0;
+    .container {
+      flex: 1;
+      margin: -4em 0;
+      h1 {
+        left: 0;
+        font-size: 3.5em;
+      }
+    }
+    .results-container {
+      flex: 1;
+      margin: 0 2em;
+      .results {
+        height: 5em;
+        p {
+          font-size: 1em;
+        }
+      }
+      .show {
+        height: auto;
+      }
+      .container-upgrade {
+        p {
+          padding-top: 0;
+          span.info {
+            display: none;
+          }
+        }
+        .upgrade-box span {
+          font-size: 5.5em;
+        }
+      }
+    }
+  }
+  .last-screen-container .last-screen {
+    h1 {
+      font-size: 6em;
+      top: -3em;
+    }
+  }
+}
