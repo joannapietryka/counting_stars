@@ -11,5 +11,4 @@ My own version of popular clicker game - algorithm is changed based on selected 
 
 
 
-![Screenshot](/clicker_screen.png) !
-
+[Screenshot](/clicker_screen.png) 
